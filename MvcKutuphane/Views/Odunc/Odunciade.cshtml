@@ -1,0 +1,41 @@
+﻿@model MvcKutuphane.Models.Entity.TBLHAREKET
+@{
+    ViewBag.Title = "Odunciade";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Odunc İade</h2>
+
+@using (Html.BeginForm("OduncGuncelle", "Odunc", FormMethod.Post))  //form da butona basılığında Odunc controllerın daki OduncGuncelle actionresultı çalıştır
+{<div style="margin-bottom:15px"></div>
+ <div class="form-group">
+     <label>HAREKET ID</label>
+     @Html.TextBoxFor(k => k.ID, new { @class = "form-control" }) @*ID si getirildi*@
+     <br />
+     <label>KITAP ADI</label>
+     @Html.TextBoxFor(k => k.TBLKITAP.AD, new { @class = "form-control" }) @*kitapadı si getirildi*@
+     <br />
+     <label>UYE ADI</label>
+     @Html.TextBoxFor(k => k.TBLUYELER.AD, new { @class = "form-control" }) @*üyeadı si getirildi*@
+     <br />
+     <label>PERSONEL ADI</label>
+     @Html.TextBoxFor(k => k.TBLPERSONEL.PERSONEL, new { @class = "form-control" }) @*personeladı si getirildi*@
+     <br />
+     <label>ALIŞ TARİHİ</label>
+     @Html.TextBoxFor(k => k.ALISTARIH, "{0: dd.MM.yyyy}", new { @class = "form-control" }) @*alıştarihi si getirildi ve formatı yazıldı*@
+     <br />
+     <label>EN GEÇ İADE TARİHİ</label>
+     @Html.TextBoxFor(k => k.IADETARIH, new { @class = "form-control" }) @*iadetarihi si getirildi ve formatı yazıldı*@
+     <br />
+     <label>UYENIN GETİRDİĞİ TARİH</label>
+     <input type="text" class="form-control" name="UyeGetirTarih" value="@DateTime.Now.ToShortDateString()" /> @*bugünün tarihi getirildi*@
+     <br />
+     <label>Geç Gelen Gün Sayısı</label>
+     <input type="text" class="form-control" id="Gecinput" value="@ViewBag.dgr" />  @*geç gelen gün sayısını hesaplama için bir input alanı açıldı*@
+ </div>
+    <div>
+        <button class="btn btn-group" style="background-color:#e2c40f">Ödünç Kitabı Geri Al</button>
+    </div>
+
+}
+

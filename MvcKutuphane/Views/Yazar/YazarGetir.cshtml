@@ -1,0 +1,30 @@
+﻿@model MvcKutuphane.Models.Entity.TBLYAZAR
+@{
+    ViewBag.Title = "YazarGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@*Hangi methodu , hangi controller içinde , ne zaman çalışcak*@
+@using (Html.BeginForm("YazarGuncelle", "Yazar", FormMethod.Post))
+            {
+<div class="form-group">
+    <div style="margin-bottom:15px">
+        <label>ID</label>
+        @Html.TextBoxFor(yazarlar => yazarlar.ID, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px">
+        <label>AD</label>
+        @Html.TextBoxFor(yazarlar => yazarlar.AD, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px">
+        <label>SOYAD</label>
+        @Html.TextBoxFor(yazarlar => yazarlar.SOYAD, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px">
+        <label>DETAY</label>
+        @Html.TextAreaFor(yazarlar => yazarlar.DETAY, new { @class = "form-control" })
+    </div>
+    <button class="btn btn-warning">Yazarı Güncelle</button>
+</div>
+
+            }
+

@@ -1,0 +1,27 @@
+﻿@model MvcKutuphane.Models.Entity.TBLYAZAR
+@{
+    ViewBag.Title = "YazarEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    @*Post olduğunda burdaki işlemleri gerçekleştir*@
+    <div style="margin-top:15px">
+        <label>YAZAR ADI</label>
+        @Html.TextBoxFor(yazar => yazar.AD, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+        @Html.ValidationMessageFor(y => y.AD)
+    </div>
+    <div style="margin-top:15px">
+        <label>YAZAR SOYADI</label>
+        @Html.TextBoxFor(yazar => yazar.SOYAD, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+        @Html.ValidationMessageFor(y=>y.SOYAD)
+    </div>
+    <div style="margin-top:15px">
+        <label>YAZAR DETAYI</label>
+        @Html.TextAreaFor(yazar => yazar.DETAY, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Yazarı Ekle</button> @*Post işlemi buton ile gerçekleşti*@
+    </div>
+</form>  
+

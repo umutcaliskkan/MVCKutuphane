@@ -1,0 +1,23 @@
+﻿@model MvcKutuphane.Models.Entity.TBLPERSONEL
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))  //form da butona basılığında kategori controllerın daki kategoriguncelle actionresultı çalıştır
+{<div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>ID</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control" }) @*ID si getirildi*@
+        <br />
+        <label>PERSONEL ADI</label>  @*elle yazılmış hali*@
+        @Html.TextBoxFor(k => k.PERSONEL, new { @class = "form-control" }) @*AD getirildi*@
+        @Html.ValidationMessageFor(x => x.PERSONEL, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+}
+
+

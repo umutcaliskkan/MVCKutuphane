@@ -1,0 +1,51 @@
+﻿@using MvcKutuphane.Models.Entity
+@model List<TBLKITAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kitap Sayfası</h2>
+
+
+@using (Html.BeginForm("Index", "Kitap", FormMethod.Get))          //Kitap arama kodları
+{
+    <div style="margin-top:15px;margin-bottom:15px">
+        <b>Aranacak Kitap Adını Girin: </b> @Html.TextBox("p")
+        <input type="submit" />
+
+    </div>
+
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kitap Adı</th>
+        <th>Yazarı</th>
+        <th>Kategorisi</th>
+        <th>Basım Yılı</th>
+        <th>Yayınevi</th>
+        <th>Sayfa</th>
+        <th>Durum</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var kitap in Model)
+    {
+        <tr>
+            <td>@kitap.ID</td>
+            <td>@kitap.AD</td>
+            <td>@kitap.TBLYAZAR.AD @kitap.TBLYAZAR.SOYAD </td> @*ilişkili tablo böyle gösteriliyor*@
+            <td>@kitap.TBLKATEGORI.AD</td>
+            <td>@kitap.BASIMYIL</td>
+            <td>@kitap.YAYINEVI</td>
+            <td>@kitap.SAYFA</td>
+            <td>@kitap.DURUM</td>
+            <td>@Html.ActionLink("SİL", "KitapSil", new { id = kitap.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+            <td><a href="/Kitap/KitapGetir/@kitap.ID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+<a href="/Kitap/KitapEkle" class="btn btn-primary">Yeni Kitap Ekle</a>

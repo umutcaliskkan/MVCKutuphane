@@ -1,0 +1,20 @@
+﻿@model MvcKutuphane.Models.Entity.TBLKATEGORI
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))  //form da butona basılığında kategori controllerın daki kategoriguncelle actionresultı çalıştır
+{               <div style="margin-bottom:15px"></div>
+                <div class="form-group">
+                    @Html.LabelFor(k => k.ID)  @*Direkt sütunun ismi gelsin*@
+                    @Html.TextBoxFor(k => k.ID, new { @class = "form-control"}) @*ID si getirildi*@
+                    <br />
+                    <label>KATEGORİ ADI</label>  @*elle yazılmış hali*@
+                    @Html.TextBoxFor(k=>k.AD,new {@class="form-control" }) @*AD getirildi*@
+                </div>
+                <div>
+                    <button class="btn btn-warning">Güncelle</button>
+                </div>
+                
+            }

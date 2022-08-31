@@ -1,0 +1,43 @@
+﻿@using MvcKutuphane.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLUYELER>  
+    @*Pagedlist için kütüphaneler eklendi*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Üyeler</h2>
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Üye Adı</th>
+        <th>Üye Soyadı</th>
+        <th>Okul</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var uye in Model)  //foreach döngüsü ile model gezilip veriler okunuyor
+
+    {
+        <tr>
+            <td>@uye.ID</td> @*ID ve ad çağırılıyor ve listeleniyor*@
+            <td>@uye.AD</td>
+            <td>@uye.SOYAD</td>
+            <td>@uye.OKUL</td>
+            <td>@Html.ActionLink("SİL", "UyeSil", new { id = uye.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+            <td><a href="/Uye/UyeGetir/@uye.ID" class="btn btn-success">GÜNCELLE</a></td>
+            <td><a href="/Uye/UyeKitapGecmis/@uye.ID" class="btn btn-success" style="background-color:chocolate">KİTAP GEÇMİŞİ</a></td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new {sayfa})) @*Sayfalamak için gerekli kodlar*@ 
+
+
+<a href="/Uye/UyeEkle" class="btn btn-primary">Yeni Üye Ekle</a>

@@ -1,0 +1,34 @@
+﻿@using MvcKutuphane.Models.Entity 
+@model List<TBLKATEGORI>            
+    @*Veri okumak için kütüphane eklendi ve tablodan list oluşturulup model e atandı*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+
+<table class="table table-bordered">
+   
+    <tr>
+        <th>ID</th>                   
+        <th>Kategori Adı</th> 
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var ktg in Model)  //foreach döngüsü ile model gezilip veriler okunuyor
+           
+            {
+        <tr>
+            <td>@ktg.ID</td>     @*ID ve ad çağırılıyor ve listeleniyor*@
+            <td>@ktg.AD</td>
+            <td>
+<a href="/Kategori/KategoriSil/@ktg.ID" class="btn btn-danger">SİL</a></td> @*Butona basıldığında kategori sil deki action reesulta gitsin ktgden gelen ID ye göre silsin*@
+            <td>
+<a href="/Kategori/KategoriGetir/@ktg.ID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+
+</table>
+
+    <a href="/Kategori/KategoriEkle" class="btn btn-primary">Yeni Kategori Ekle</a>

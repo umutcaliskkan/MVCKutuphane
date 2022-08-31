@@ -1,0 +1,35 @@
+﻿@using MvcKutuphane.Models.Entity
+@model List<TBLYAZAR>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yazarlar</h2>
+
+<table class="table table-striped">
+    <tr style="background-color:#c3e119">
+        <th>ID</th>
+        <th>AD</th>
+        <th>SOYAD</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach(var yazarlar in Model)
+            {
+<tr>
+    <td>@yazarlar.ID</td>
+    <td>@yazarlar.AD</td>
+    <td>@yazarlar.SOYAD</td>
+       @*Değişik bir silme işlemi*@
+    <td>@Html.ActionLink("SİL", "YazarSil", new { id = yazarlar.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor musunuz?')" })</td>
+    <td><a href="/Yazar/YazarGetir/@yazarlar.ID" class="btn btn-success">GÜNCELLE</a></td>
+    <td><a href="/Yazar/YazarKitaplar/@yazarlar.ID" class="btn btn-default" style="background-color:lightseagreen; color:black">YAZARIN KİTAPLARI</a></td>
+</tr>
+            }
+</table>
+
+<a class="btn btn-primary" href="/Yazar/YazarEkle/">Yeni Yazar Ekle</a>
+ 

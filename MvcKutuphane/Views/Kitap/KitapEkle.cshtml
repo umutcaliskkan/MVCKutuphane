@@ -1,0 +1,39 @@
+﻿@model MvcKutuphane.Models.Entity.TBLKITAP
+@{
+    ViewBag.Title = "KitapEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    @*Post olduğunda burdaki işlemleri gerçekleştir*@
+    <div style="margin-top:15px">
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(kitap => kitap.AD, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Kategori</label>
+        @Html.DropDownListFor(kitap => kitap.TBLKATEGORI.ID, (List<SelectListItem>)ViewBag.drop1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Yazarı</label>
+        @Html.DropDownListFor(kitap => kitap.TBLYAZAR.ID, (List<SelectListItem>)ViewBag.drop2, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Basım Yılı</label>
+        @Html.TextBoxFor(kitap => kitap.BASIMYIL, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Yayınevi</label>
+        @Html.TextBoxFor(kitap => kitap.YAYINEVI, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Sayfa Sayısı</label>
+        @Html.TextBoxFor(kitap => kitap.SAYFA, new { @class = "form-control" }) @*veri giriş yeri açıldı ve class ile görünüm verildi*@
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Kitabı Ekle</button> @*Post işlemi buton ile gerçekleşti*@
+    </div>
+    <input type="hidden" name="DURUM" value="True" /> @*Durumu başlanıgç değerini TRUE yapma*@
+</form>
+

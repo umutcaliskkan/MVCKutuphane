@@ -1,0 +1,22 @@
+﻿@model MvcKutuphane.Models.Entity.TBLPERSONEL
+    @{
+        ViewBag.Title = "PersonelEkle";
+        Layout = "~/Views/Shared/Layout.cshtml";
+    }
+
+    <h2>Personel Ekle</h2>
+    <div></div>
+    <form class="form-group" method="post">
+        @*form oluştuk ve bu form sayfada tıklama olduğu zaman işleme alınacak*@
+        <div>
+            <label>Personel Adı</label>
+            @Html.TextBoxFor(x => x.PERSONEL, new {@class="form-control"})  @*Veri girilecek yer*@
+            @Html.ValidationMessageFor(x => x.PERSONEL, "", new {@style="color:red"})     @*Hata mesajını gösterme*@
+        </div>
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="Btn1">Personeli Ekle</button>
+
+        </div>
+
+    </form>
+

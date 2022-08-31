@@ -1,0 +1,44 @@
+﻿@model MvcKutuphane.Models.Entity.TBLUYELER
+@{
+    ViewBag.Title = "UyeGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UyeGuncelle", "Uye", FormMethod.Post))  //form da butona basılığında kategori controllerın daki kategoriguncelle actionresultı çalıştır
+{<div style="margin-bottom:15px"></div>
+ <div class="form-group">
+     <label>ID</label>
+     @Html.TextBoxFor(k => k.ID, new { @class = "form-control" }) @*ID si getirildi*@
+     <br />
+     <label>ÜYE ADI</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.AD, new { @class = "form-control" }) @*AD getirildi*@
+     @Html.ValidationMessageFor(x => x.AD, "", new { @style = "color:red" })
+     <br />
+     <label>ÜYE SOYADI</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.SOYAD, new { @class = "form-control" }) @*SOYAD getirildi*@
+     <br />
+     <label>MAIL</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control" }) @*MAIL getirildi*@
+     <br />
+     <label>KULLANICI ADI</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.KULLANICIADI, new { @class = "form-control" }) @*KULLANICIADI getirildi*@
+     <br />
+     <label>ŞİFRE</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.SIFRE, new { @class = "form-control" }) @*ŞİFRE getirildi*@
+     @Html.ValidationMessageFor(x => x.SIFRE, "", new { @style = "color:red" })
+     <br />
+     <label>FOTOĞRAF LİNKİ</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.FOTOGRAF, new { @class = "form-control" }) @*AD getirildi*@
+     <br />
+     <label>TELEFON</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.TELEFON, new { @class = "form-control" }) @*AD getirildi*@
+     <br />
+     <label>OKUL</label>  @*elle yazılmış hali*@
+     @Html.TextBoxFor(k => k.OKUL, new { @class = "form-control" }) @*AD getirildi*@
+ </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+}
+
